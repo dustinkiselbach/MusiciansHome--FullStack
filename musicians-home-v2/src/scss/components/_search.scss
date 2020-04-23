@@ -1,0 +1,31 @@
+.home-search {
+  display: flex;
+  width: 50%;
+  height: 3rem;
+  position: relative;
+  @include respond(tab-port) {
+    width: 75%;
+  }
+
+  &__text {
+    width: 100%;
+    border-radius: 2px;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.3rem 1rem;
+  }
+  &__btn {
+    height: 100%;
+    width: 10%;
+    border: none;
+    background-color: inherit;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    transition: all 0.2s;
+    @include respond(phone) {
+      right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+$primary-color: #0f4c81;
+$primary-color-darker: #09355c;
+$dark-color: #1b262c;
+$light-color: #f4f4f4;
+$danger-color: #dc3545;
+$success-color: #28a745;
+
+// Set text color based on background
+@function set-text-color($color) {
+  @if (lightness($color) >60) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
+
+// Media query manager
+// 0 - 600px: phone
+// 600-900 tablet portrait
+// 900-1200px: Tablet landscape
+// 1200-1800 normal
+// 1080px plus big desktop
+
+//breakpoint argument choices
+// -phone -tab-port -tab-land - big-desktop
+
+// Order base + typograhpy > general layout + grid > page layout > components
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 600px) {
+      //600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 900px) {
+      //900px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 1200px) {
+      //900px
+      @content;
+    }
+  }
+  @if $breakpoint == med-desktop {
+    @media (min-width: 1400px) {
+      //1800px
+      @content;
+    }
+  }
+  @if $breakpoint == lg-desktop {
+    @media (min-width: 1600px) {
+      //1800px
+      @content;
+    }
+  }
+  @if $breakpoint == huge-desktop {
+    @media (min-width: 1800px) {
+      //1800px
+      @content;
+    }
+  }
+}

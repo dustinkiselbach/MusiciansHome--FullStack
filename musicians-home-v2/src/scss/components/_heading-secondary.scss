@@ -1,0 +1,23 @@
+.heading-secondary {
+  height: 15vh;
+  background-image: url(./img/header-2.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  & h2 {
+    color: $light-color;
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+.navbar {
+  display: flex;
+  padding: 0.5rem 2rem;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px $primary-color;
+  opacity: 0.9;
+  transition: all 0.5s ease;
+
+  a {
+    color: #fff;
+    &:hover {
+      color: $primary-color;
+    }
+    @include respond(tab-land) {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  & .right-side__nav {
+    display: flex;
+    position: relative;
+    @include respond(phone) {
+      display: none;
+    }
+
+    & li {
+      margin-right: 1rem;
+    }
+
+    & form input {
+      font-family: inherit;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      border: none;
+      font-size: inherit;
+      transition: all 0.2s;
+
+      &:focus {
+        transform: scale(1.1);
+      }
+
+      &:focus + .search-btn {
+        transform: scale(1.1) translateX(0.5rem);
+      }
+    }
+
+    & .search-btn {
+      border: none;
+      background-color: inherit;
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem;
+      transition: all 0.2s;
+    }
+  }
+
+  & .left-side__nav {
+    display: none;
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.responsive-nav {
+  display: none;
+
+  @include respond(phone) {
+    display: block;
+  }
+
+  .hamburger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem;
+    width: 55px;
+    height: 46px;
+    background-color: rgba($primary-color, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > div {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        width: 100%;
+        height: 2px;
+        background: inherit;
+      }
+
+      &:after {
+        top: 10px;
+      }
+    }
+  }
+
+  & menu {
+    display: block;
+    width: 100px;
+  }
+}
+
+.toggled {
+  background-color: $primary-color;
+  opacity: 0.95;
+}
+
+.hamburgertoggled {
+  & > div {
+    background-color: #fff;
+    transform: rotate(135deg);
+    transition: all 0.5s ease;
+
+    &:before,
+    &:after {
+      top: 0 !important;
+      transform: rotate(90deg);
+    }
+  }
+}

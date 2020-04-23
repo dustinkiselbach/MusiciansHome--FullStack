@@ -1,0 +1,19 @@
+.header {
+  height: 50vh;
+  background-image: url(./img/header-1.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $light-color;
+    margin-bottom: 1rem;
+  }
+}
