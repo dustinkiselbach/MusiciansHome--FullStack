@@ -11,6 +11,8 @@ module.exports = function validateListingsInput (data) {
   data.city = !isEmpty(data.city) ? data.city : ''
   data.state = !isEmpty(data.state) ? data.state : ''
   data.zipcode = !isEmpty(data.zipcode) ? data.zipcode : ''
+  data.movein = !isEmpty(data.movein) ? data.movein : ''
+  data.moveout = !isEmpty(data.moveout) ? data.moveout : ''
 
   if (!Validator.isLength(data.description, { min: 6, max: 50 })) {
     errors.description = 'Description must be between 6 and 50 characters'
@@ -37,6 +39,12 @@ module.exports = function validateListingsInput (data) {
   }
   if (Validator.isEmpty(data.zipcode)) {
     errors.zipcode = 'zipcode field is required'
+  }
+  if (Validator.isEmpty(data.movein)) {
+    errors.movein = 'move in field is required'
+  }
+  if (Validator.isEmpty(data.moveout)) {
+    errors.moveout = 'moveout field is required'
   }
 
   return {

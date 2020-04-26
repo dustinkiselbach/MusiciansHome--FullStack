@@ -39,7 +39,6 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     let errors = {}
-    let response
 
     singleUpload(req, res, err => {
       if (err) {

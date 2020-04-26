@@ -16,8 +16,12 @@
   & h2 {
     color: $light-color;
 
-    @include respond(phone) {
+    @include respond(tab-port) {
       display: none;
     }
+  }
+
+  & a {
+    color: $light-color;
   }
 }

@@ -31,7 +31,9 @@ export default (state, action) => {
     case ADD_LISTING:
       return {
         ...state,
-        listings: [action.payload, ...state.listings],
+        addedId: action.payload._id,
+        // listings: [action.payload, ...state.listings], DONT NEED TO DO THIS
+        // FORM IS SEPERATE
         loading: false
       }
     case DELETE_LISTING:
@@ -49,7 +51,7 @@ export default (state, action) => {
       return {
         ...state,
         listings: state.listings.map(listing =>
-          listing.id === action.payload.id ? action.payload : listing
+          listing._id === action.payload._id ? action.payload : listing
         )
       }
     case FILTER_LISTINGS:

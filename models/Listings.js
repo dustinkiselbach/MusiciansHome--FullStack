@@ -7,9 +7,7 @@ const ListingsSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  name: {
-    type: String
-  },
+
   title: {
     type: String,
     required: true
@@ -42,6 +40,16 @@ const ListingsSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  roommates: {
+    type: String
+  },
+
+  movein: {
+    type: Date
+  },
+  moveout: {
+    type: Date
+  },
   img: [
     {
       url: {
@@ -58,5 +66,10 @@ const ListingsSchema = new Schema({
     }
   ]
 })
+
+//Virtual for sublet duration
+// ListingsSchema.virtual('duration').get(() => {
+//   return (this.movein.getMonth() - this.moveout.getMonth()).toString()
+// })
 
 module.exports = Listings = mongoose.model('listings', ListingsSchema)

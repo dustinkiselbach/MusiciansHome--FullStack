@@ -17,3 +17,9 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 export const REGISTER_USER = 'REGISTER_USER'
 export const USER_ERROR = 'USER_ERROR'
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
+
+// Profile types
+export const GET_USER_PROFILE = 'GET_USER_PROFILE'
+export const PROFILE_ERROR = 'PROFILE_ERROR'
+export const PROFILE_LOADING = 'PROFILE_LOADING'
+export const UNSAVE_LISTING = 'UNSAVE_LISTING'

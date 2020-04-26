@@ -9,7 +9,7 @@
   border: $light-color solid 1px;
   box-shadow: 0 0.2rem 0.5rem rgba($dark-color, 0.8);
   padding: 1rem;
-  width: 75%;
+  width: auto;
   background-color: rgba($light-color, 0.9);
   border-radius: 2px;
   display: grid;
@@ -29,13 +29,17 @@
       flex-direction: column;
       margin-top: 2rem;
     }
-    & input {
+    & input,
+    textarea,
+    select {
       width: 95%;
       border-radius: 2px;
       border: rgba($primary-color, 0.45) solid 1px;
       font-family: inherit;
       font-size: inherit;
       padding: 0.5rem 1rem;
+      // only applies to select list
+      color: rgba($dark-color, 0.95);
     }
     & .error-msg {
       font-size: 0.8rem;

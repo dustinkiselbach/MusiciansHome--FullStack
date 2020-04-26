@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import UsersContext from './usersContext'
 import usersReducer from './usersReducer'
 import axios from 'axios'
@@ -14,6 +14,30 @@ const UsersState = props => {
   }
 
   const [state, dispatch] = useReducer(usersReducer, initialState)
+
+  // onrerender check if user is logged in
+  useEffect(() => {
+    // Check for token
+    if (localStorage.jwtToken) {
+      // Set auth token header auth
+      setAuthToken(localStorage.jwtToken)
+      // Decode token and get user info and exp
+      const decoded = jwt_decode(localStorage.jwtToken)
+      // Set user and isAuthenticated
+      setCurrentUser(decoded)
+
+      // Check for expired token
+      const currentTime = Date.now() / 1000
+      if (decoded.exp < currentTime) {
+        // Logout user / test
+        logoutUser()
+        // Clear current Profile
+        // TODO store.dispatch(clearCurrentProfile())
+        // Redirect to login
+        window.location.href = '/login'
+      }
+    }
+  }, [])
 
   // Register User
   const registerUser = async (user, history) => {
@@ -84,7 +108,8 @@ const UsersState = props => {
         errors: state.errors,
         registerUser,
         loginUser,
-        logoutUser
+        logoutUser,
+        setCurrentUser
       }}
     >
       {props.children}

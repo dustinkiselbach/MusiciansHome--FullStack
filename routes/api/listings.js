@@ -53,6 +53,7 @@ router.post(
       // If any errors, send 400 with errors object
       return res.status(400).json(errors)
     }
+
     const newListing = new Listings({
       title: req.body.title,
       price: req.body.price,
@@ -62,10 +63,27 @@ router.post(
       state: req.body.state,
       zipcode: req.body.zipcode,
       datepost: req.body.dateposted,
+      roommates: req.body.roommates,
+      movein: req.body.movein,
+      moveout: req.body.moveout,
+
       user: req.user.id
     })
 
     newListing.save().then(listing => res.json(listing))
+  }
+)
+
+// @route  GET api/listings/user-listings
+// @desc   DELETE Listing
+// @access Private
+router.get(
+  '/user-listings/fart',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Listings.find({ user: req.user.id }).then(listings => {
+      console.log(listings)
+    })
   }
 )
 
@@ -122,6 +140,10 @@ router.put(
       state: req.body.state,
       zipcode: req.body.zipcode,
       datepost: req.body.dateposted,
+      roommates: req.body.roommates,
+      movein: req.body.movein,
+      moveout: req.body.moveout,
+
       user: req.user.id
     }
     User.findOne({ user: req.user.id }).then(user => {

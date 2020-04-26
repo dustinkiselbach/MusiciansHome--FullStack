@@ -2,17 +2,23 @@ import React, { useState, useContext, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import ResponsiveNav from './ResponsiveNav'
 import UsersContext from '../../context/users/usersContext'
+import ProfileContext from '../../context/profile/profileContext'
 import classnames from 'classnames'
 
 const Navbar = () => {
   const usersContext = useContext(UsersContext)
   const { logoutUser, isAuthenticated } = usersContext
 
+  const profileContext = useContext(ProfileContext)
+  const { clearUserProfile } = profileContext
+
   const [toggled, setToggled] = useState('none')
   const [toggleBool, setToggleBool] = useState(false)
 
   const onLogoutClick = e => {
     e.preventDefault()
+    clearUserProfile()
+    console.log(clearUserProfile)
     logoutUser()
   }
 
@@ -44,9 +50,14 @@ const Navbar = () => {
   const authLinks = (
     <Fragment>
       <Link to='/listings'>
-        <li>Rent</li>
+        <li>Sublet</li>
       </Link>
-      <li>Sublet</li>
+      <Link to='/listings/form'>
+        <li>List</li>
+      </Link>
+      <Link to='/profile'>
+        <li>Profile</li>
+      </Link>
       <a href='/#' onClick={onLogoutClick}>
         Logout
       </a>

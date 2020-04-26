@@ -1,12 +1,19 @@
 import React, { useContext, useEffect } from 'react'
 import ListingsContext from '../../context/listings/listingsContext'
+import ProfileContext from '../../context/profile/profileContext'
 import ListingMedia from './ListingMedia'
 import ListingInfo from './ListingInfo'
 import ListingSidebar from './ListingSidebar'
+import ListingSocial from './ListingSocial'
+import Spinner from '../layout/Spinner'
 
 const Listing = ({ match }) => {
-  const contactContext = useContext(ListingsContext)
-  const { listing, getListing, clearListing } = contactContext
+  const listingContext = useContext(ListingsContext)
+  const { listing, getListing, clearListing } = listingContext
+
+  const profileContext = useContext(ProfileContext)
+
+  const { saveListing } = profileContext
 
   useEffect(() => {
     getListing(match.params.id)
@@ -16,6 +23,11 @@ const Listing = ({ match }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps,
   }, [])
+
+  const onClickSave = e => {
+    e.preventDefault()
+    saveListing(listing._id)
+  }
 
   if (listing) {
     return (
@@ -28,25 +40,27 @@ const Listing = ({ match }) => {
             </h3>
             <ul className='listing-detail__nav--links'>
               <li className='listing-detail__nav--linkitems'>
-                <span className='material-icons'>save_alt</span>save
+                <a href='/#' onClick={onClickSave}>
+                  <span className='material-icons'>save_alt</span>save
+                </a>
               </li>
               <li className='listing-detail__nav--linkitems'>
-                <span className='material-icons'>share</span>share
+                <ListingSocial />
               </li>
             </ul>
           </div>
           <ListingMedia listing={listing} />
 
           <div className='listing-detail__secondary'>
-            <ListingInfo />
+            <ListingInfo listing={listing} />
 
-            <ListingSidebar />
+            <ListingSidebar listing={listing} />
           </div>
         </div>
       </div>
     )
   }
-  return <div>fart</div>
+  return <Spinner />
 }
 
 export default Listing

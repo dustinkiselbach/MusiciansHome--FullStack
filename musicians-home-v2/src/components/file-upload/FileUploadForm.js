@@ -2,7 +2,7 @@ import React, { useContext, useCallback } from 'react'
 import ListingContext from '../../context/listings/listingsContext'
 import { useDropzone } from 'react-dropzone'
 
-const FileUploadForm = ({ match }) => {
+const FileUploadForm = ({ match, history }) => {
   const listingContext = useContext(ListingContext)
 
   const { addImage } = listingContext
@@ -46,6 +46,11 @@ const FileUploadForm = ({ match }) => {
 
   //   console.log(acceptedFiles)
 
+  const onDoneClick = e => {
+    e.preventDefault()
+    history.push(`/listings/${match.params.id}`)
+  }
+
   return (
     <div style={{ marginTop: '10rem' }}>
       {/* <form onSubmit={onSubmit}>
@@ -65,6 +70,9 @@ const FileUploadForm = ({ match }) => {
           <ul>{files}</ul>
         </aside>
       </section>
+      <button onClick={onDoneClick} className='btn'>
+        Done
+      </button>
       {/* </form> */}
     </div>
   )

@@ -7,7 +7,24 @@ const ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  listings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'listings'
+    }
+  ],
   birthday: {
     type: Date
-  }
+  },
+  lookingfor: {
+    type: String
+  },
+  saved: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'listings'
+    }
+  ]
 })
+
+module.exports = Profile = mongoose.model('profile', ProfileSchema)

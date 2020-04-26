@@ -27,7 +27,8 @@ const ListingsState = props => {
     currentSearch: '',
     listing: null,
     errors: {},
-    loading: false
+    loading: false,
+    addedId: null
   }
 
   const [state, dispatch] = useReducer(listingsReducer, initialState)
@@ -189,6 +190,7 @@ const ListingsState = props => {
         errors: state.errors,
         loading: state.loading,
         submitted: state.submitted,
+        addedId: state.addedId,
         addListing,
         deleteListing,
         setCurrent,
