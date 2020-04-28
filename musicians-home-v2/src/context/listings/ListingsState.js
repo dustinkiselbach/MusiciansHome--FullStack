@@ -12,6 +12,7 @@ import {
   FILTER_LISTINGS,
   CLEAR_FILTER,
   SET_CURRENT_SEARCH,
+  SEARCH_LISTINGS,
   GET_LISTING,
   ADD_IMAGE,
   DELETE_IMAGE,
@@ -27,6 +28,7 @@ const ListingsState = props => {
     // Used when updating only
     current: null,
     filtered: null,
+    searchResults: null,
     currentSearch: '',
     listing: null,
     errors: {},
@@ -187,6 +189,15 @@ const ListingsState = props => {
     // loading
   }
 
+  // Search Listings
+  const searchListings = async (page, query) => {
+    try {
+      const res = await axios.get(`/api/listings/search/${page}?city=${query}`)
+      dispatch({ type: SEARCH_LISTINGS, payload: res.data })
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <ListingsContext.Provider
       value={{
@@ -200,6 +211,7 @@ const ListingsState = props => {
         loading: state.loading,
         submitted: state.submitted,
         addedId: state.addedId,
+        searchResults: state.searchResults,
         addListing,
         deleteListing,
         setCurrent,
@@ -212,7 +224,8 @@ const ListingsState = props => {
         setCurrentSearch,
         clearListing,
         addImage,
-        deleteImage
+        deleteImage,
+        searchListings
       }}
     >
       {props.children}

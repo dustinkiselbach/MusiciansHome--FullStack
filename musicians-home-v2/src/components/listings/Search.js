@@ -6,21 +6,16 @@ const Search = () => {
   const [redirect, setRedirect] = useState(false)
 
   const listingsContext = useContext(ListingsContext)
-  const {
-    filterListings,
-    // filtered,
-    currentSearch,
-    setCurrentSearch
-  } = listingsContext
+  const { currentSearch, setCurrentSearch, searchListings } = listingsContext
 
   const onChange = e => {
-    filterListings(e.target.value)
     setCurrentSearch(e.target.value)
   }
 
   const onSubmit = e => {
     e.preventDefault()
     setRedirect(true)
+    searchListings(1, currentSearch)
   }
   if (redirect) {
     return <Redirect to='/listings' />

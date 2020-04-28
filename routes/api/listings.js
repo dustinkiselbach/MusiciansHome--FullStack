@@ -3,6 +3,9 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const passport = require('passport')
 
+// Helper Regex
+const escapeRegex = require('../../utils/regex-escape')
+
 // Listing model
 const Listings = require('../../models/Listings')
 const User = require('../../models/User')
@@ -169,5 +172,36 @@ router.put(
     })
   }
 )
+
+// Trying to get search query working
+router.get('/search/:page', async (req, res, next) => {
+  const resPerPage = 10
+  const page = req.params.page || 1
+
+  try {
+    if (req.query) {
+      const query = req.query.city
+
+      const foundListings = await Listings.find({
+        city: { $regex: new RegExp(query, 'i') }
+      })
+        .skip(resPerPage * page - resPerPage)
+        .limit(resPerPage)
+
+      const numOfListings = await Listings.count({
+        city: { $regex: new RegExp(query, 'i') }
+      })
+      return res.json({
+        listings: foundListings,
+        currentPage: page,
+        pages: Math.ceil(numOfListings / resPerPage),
+        searchVal: query,
+        numOfResults: numOfListings
+      })
+    }
+  } catch (err) {
+    throw new Error(err)
+  }
+})
 
 module.exports = router

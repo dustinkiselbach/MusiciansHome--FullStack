@@ -4,24 +4,32 @@ import ListingsHeader from '../layout/ListingsHeader'
 import ListingsContext from '../../context/listings/listingsContext'
 import Spinner from '../layout/Spinner'
 import { Link } from 'react-router-dom'
+import Pagination from '../common/Pagination'
 
 const Listings = () => {
   const listingsContext = useContext(ListingsContext)
-
-  useEffect(() => {
-    getListings()
-    // eslint-disable-next-line react-hooks/exhaustive-deps,
-  }, [])
 
   const {
     listings,
     clearCurrent,
     getListings,
-    filtered,
+    searchResults,
+    searchListings,
     clearFilter,
     setCurrentSearch,
+    currentSearch,
     loading
   } = listingsContext
+
+  useEffect(() => {
+    getListings()
+    if (searchResults !== null) {
+      console.log(Array.from({ length: searchResults.pages }, (x, i) => i))
+      console.log(searchResults.pages)
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
+  }, [searchResults])
 
   const onClick = () => {
     clearCurrent()
@@ -35,8 +43,8 @@ const Listings = () => {
         <ListingsHeader />
         <div className='container'>
           <section className='listing-section'>
-            {filtered !== null
-              ? filtered.map(listing => (
+            {searchResults !== null
+              ? searchResults.listings.map(listing => (
                   <ListingsList listing={listing} key={listing._id} />
                 ))
               : listings.map(listing => (
@@ -45,6 +53,24 @@ const Listings = () => {
           </section>
 
           <div className='dark-line'></div>
+          {searchResults !== null ? (
+            <div className='listing-section__pages'>
+              <small className='listing-section__pages-small'>pages:</small>
+              {Array.from({ length: searchResults.pages }, (x, i) => i).map(
+                item => (
+                  <div key={item}>
+                    <Pagination
+                      currentSearch={currentSearch}
+                      searchListings={searchListings}
+                      item={item}
+                    />
+                  </div>
+                )
+              )}
+            </div>
+          ) : (
+            <div />
+          )}
           <div className='listing-section__links'>
             <Link
               onClick={onClick}

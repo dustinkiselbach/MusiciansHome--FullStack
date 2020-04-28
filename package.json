@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix musicians-home-v2",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix musicians-home-v2 && npm run build --prefix musicians-home-v2"
   },
   "author": "Dustin Kiselbach",
   "license": "ISC",

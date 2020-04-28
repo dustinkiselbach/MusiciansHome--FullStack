@@ -1,16 +1,7 @@
-import React, { Fragment, useContext, useState } from 'react'
-import ListingsContext from '../../context/listings/listingsContext'
-import UsersContext from '../../context/users/usersContext'
-import { Link, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ListingsList = ({ listing }) => {
-  const contactContext = useContext(ListingsContext)
-  const { deleteListing, setCurrent, clearCurrent } = contactContext
-
-  const usersContext = useContext(UsersContext)
-
-  const [redirect, setRedirect] = useState(false)
-
   const {
     title,
     // description,
@@ -24,19 +15,15 @@ const ListingsList = ({ listing }) => {
     img
   } = listing
 
-  const onDelete = () => {
-    deleteListing(_id)
-    clearCurrent()
-  }
+  // const onDelete = () => {
+  //   deleteListing(_id)
+  //   clearCurrent()
+  // }
 
-  const onUpdate = () => {
-    setCurrent(listing)
-    setRedirect(true)
-  }
-
-  if (redirect) {
-    return <Redirect to='/listings/form' />
-  }
+  // const onUpdate = () => {
+  //   setCurrent(listing)
+  //   setRedirect(true)
+  // }
 
   let imgUrl
 
@@ -58,10 +45,10 @@ const ListingsList = ({ listing }) => {
         <div className='listing__text--items'>
           <h2 className='listing__text--price'>{title}</h2>
           <p className='listing__text--details'>
-            {address}, {city}, {state}, {zipcode}
+            {city}, {state}, {zipcode}
           </p>
         </div>
-        <div className='listing__text--links'>
+        {/* <div className='listing__text--links'>
           {usersContext.user !== null &&
           user.toString() === usersContext.user.id ? (
             <Fragment>
@@ -79,8 +66,8 @@ const ListingsList = ({ listing }) => {
             </Fragment>
           ) : (
             ''
-          )}
-        </div>
+          )} */}
+        {/* </div> */}
       </div>
     </div>
   )

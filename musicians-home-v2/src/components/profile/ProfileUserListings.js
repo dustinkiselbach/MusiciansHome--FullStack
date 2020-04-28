@@ -2,7 +2,6 @@ import React from 'react'
 import ProfileUserListingsItem from './ProfileUserListingsItem'
 
 const ProfileUserListings = ({ userListings, history }) => {
-  console.log(userListings)
   return (
     <div className='profile-userlistings'>
       <h1 className='profile-userlistings__title title'>

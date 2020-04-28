@@ -17,6 +17,10 @@
     display: flex;
     justify-content: center;
   }
+
+  &__pages {
+    display: flex;
+  }
 }
 .listing {
   display: flex;
@@ -39,6 +43,7 @@
     width: 90%;
     height: 100%;
     justify-content: space-between;
+    margin: 1rem;
 
     &--links {
       text-align: center;

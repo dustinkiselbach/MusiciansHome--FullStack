@@ -148,6 +148,7 @@ const ListingForm = props => {
                   onChange={onChange}
                   // className='input-error'
                   error={errors.price}
+                  info='Per month'
                 />
 
                 <TextAreaFieldGroup
@@ -180,6 +181,7 @@ const ListingForm = props => {
                   onChange={onChange}
                   // className='input-error'
                   error={errors.movein}
+                  info='Move in date'
                 />
 
                 <TextFieldGroupNew
@@ -190,6 +192,7 @@ const ListingForm = props => {
                   onChange={onChange}
                   // className='input-error'
                   error={errors.moveout}
+                  info='Move out date'
                 />
 
                 <TextFieldGroupNew

@@ -3,15 +3,64 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 8rem;
+
+  padding: 4rem;
   border: 1px rgba($primary-color, 0.5) dashed;
+  margin: 1rem 1rem 4rem 1rem;
 }
 
 .fileupload {
-  margin-top: 6rem;
   &__imgitem {
+    position: relative;
+    margin: 0.5rem;
     &-img {
       width: 10rem;
+      height: 10rem;
+    }
+    span {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    padding: 1rem;
+    @include respond(phone) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__header-secondary {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .btn {
+      text-align: center;
+      width: 25%;
+    }
+  }
+
+  & #fileupload {
+    height: 15vh;
+    background-image: url(./img/header-3.jpg);
+    background-size: cover;
+    background-position: bottom;
+    & .heading-secondary__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5rem;
     }
   }
 }

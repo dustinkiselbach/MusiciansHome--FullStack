@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import ListingsContext from '../../context/listings/listingsContext'
 import FileUploadImgItem from './FileUploadImgItem'
+import FileUploadHeader from './FileUploadHeader'
 import { useDropzone } from 'react-dropzone'
 
 const FileUploadForm = ({ match, history }) => {
@@ -22,7 +23,7 @@ const FileUploadForm = ({ match, history }) => {
 
   // making sure you can't upload more than 5
   useEffect(() => {
-    if (listing !== null && listing.img.length === 5) {
+    if (listing !== null && listing.img.length === 4) {
       setDisabled(true)
     } else {
       setDisabled(false)
@@ -46,11 +47,11 @@ const FileUploadForm = ({ match, history }) => {
   })
 
   // Files to output in UI
-  const files = acceptedFiles.map(file => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ))
+  // const files = acceptedFiles.map(file => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ))
 
   let images
 
@@ -91,29 +92,34 @@ const FileUploadForm = ({ match, history }) => {
 
   return (
     <section className='fileupload'>
-      {/* <form onSubmit={onSubmit}>
+      <FileUploadHeader />
+      <div className='container'>
+        {/* <form onSubmit={onSubmit}>
         <input type='file' name='myImage' onChange={onChange} />
         <button type='submit'>Upload</button> */}
-      {/* reactdropzone */}
-      <div className='container'>
-        <h1 className='title'>You can remove your images</h1>
-        {images}
-        <div {...getRootProps({ className: 'dropzone' })}>
-          <input {...getInputProps({ disabled })} />
-          <p>
-            Drag 'n' drop some images for your listing here, or click to select
-            files
-          </p>
+        {/* reactdropzone */}
+        <div className='fileupload__action'>
+          <div {...getRootProps({ className: 'dropzone' })}>
+            <input {...getInputProps({ disabled })} />
+            <p>
+              Drag 'n' drop some images for your listing here, or click to
+              select files
+            </p>
+          </div>
         </div>
-        <aside>
-          <h4>Files</h4>
-          <ul>{files}</ul>
-        </aside>
+        <div className='dark-line'></div>
+        <div className='fileupload__header-secondary'>
+          <h1 className='title'>Edit your images here</h1>
+          <p className='lead'>The first image is featured</p>
+        </div>
+        <div className='fileupload__items'>{images}</div>
+        {/* </form> */}
       </div>
-      <button onClick={onDoneClick} className='btn'>
-        Done
-      </button>
-      {/* </form> */}
+      <div className='fileupload__bottom'>
+        <button onClick={onDoneClick} className='btn'>
+          Done
+        </button>
+      </div>
     </section>
   )
 }

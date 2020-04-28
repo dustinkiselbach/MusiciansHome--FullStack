@@ -4,7 +4,7 @@ import Moment from 'react-moment'
 const ProfileDetails = ({ userProfile }) => {
   return (
     <div className='profile-details'>
-      <h2 className='profile-details--title title-secondary'>Your Details:</h2>
+      <h2 className='profile-details--title title-secondary'>Details:</h2>
       <h3 className='profile-details--email title-tertiary'>
         {userProfile.user.email}
       </h3>

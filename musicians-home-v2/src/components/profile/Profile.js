@@ -34,9 +34,7 @@ const Profile = props => {
       <Fragment>
         <ProfileDetails userProfile={userProfile} />
         <div className='profile-saved'>
-          <h2 className='profile-saved--title title-secondary'>
-            Your Saved listings:
-          </h2>
+          <h2 className='profile-saved--title title-secondary'>Saved:</h2>
           {userProfile.saved.length > 0 ? (
             userProfile.saved.map(item => (
               <ProfileSavedListings item={item} key={item._id} />
@@ -80,6 +78,7 @@ const Profile = props => {
             <ProfileUserListings
               userListings={userListings}
               history={props.history}
+              loading={loading}
             />
           ) : (
             <div>NO USER LISTINGS</div>

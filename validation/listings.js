@@ -14,8 +14,8 @@ module.exports = function validateListingsInput (data) {
   data.movein = !isEmpty(data.movein) ? data.movein : ''
   data.moveout = !isEmpty(data.moveout) ? data.moveout : ''
 
-  if (!Validator.isLength(data.description, { min: 6, max: 50 })) {
-    errors.description = 'Description must be between 6 and 50 characters'
+  if (!Validator.isLength(data.description, { min: 6, max: 500 })) {
+    errors.description = 'Description must be between 6 and 500 characters'
   }
 
   if (Validator.isEmpty(data.description)) {

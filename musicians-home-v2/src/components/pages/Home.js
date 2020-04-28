@@ -9,15 +9,13 @@ const Home = () => {
       id: 1,
       title: 'Find your place',
       icon: 'house',
-      text:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit 123 woa that cheese.'
+      text: 'Find a sublet with like minded artists and musicians.'
     },
     {
       id: 2,
-      title: 'Eat out of a fridge',
-      icon: 'kitchen',
-      text:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit chesey poofs r gud'
+      title: 'A place you"ll love',
+      icon: 'favorite',
+      text: 'Stay for as long as you want to in the places you want to.'
     }
   ])
   return (

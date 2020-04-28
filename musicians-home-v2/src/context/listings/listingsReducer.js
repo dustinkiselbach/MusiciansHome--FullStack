@@ -8,6 +8,7 @@ import {
   FILTER_LISTINGS,
   CLEAR_FILTER,
   SET_CURRENT_SEARCH,
+  SEARCH_LISTINGS,
   GET_LISTING,
   ADD_IMAGE,
   DELETE_IMAGE,
@@ -29,6 +30,11 @@ export default (state, action) => {
       return {
         ...state,
         listing: action.payload
+      }
+    case SEARCH_LISTINGS:
+      return {
+        ...state,
+        searchResults: action.payload
       }
     case ADD_IMAGE:
       console.log(action.payload)
