@@ -9,6 +9,8 @@ const profile = require('./routes/api/profile')
 const listings = require('./routes/api/listings')
 const fileRoutes = require('./routes/api/file-upload')
 
+require('dotenv').config()
+
 const app = express()
 
 // Body parser middleware

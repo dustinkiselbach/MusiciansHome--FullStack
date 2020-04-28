@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useState,
-  useCallback,
-  useEffect,
-  Profiler
-} from 'react'
+import React, { useContext, useState, useCallback, useEffect } from 'react'
 import ListingsContext from '../../context/listings/listingsContext'
 import FileUploadImgItem from './FileUploadImgItem'
 import FileUploadHeader from './FileUploadHeader'

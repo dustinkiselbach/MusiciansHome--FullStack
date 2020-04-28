@@ -4,8 +4,8 @@ const s3 = new aws.S3()
 
 // TODO move secret keys
 aws.config.update({
-  secretAccessKey: '3ka1Y4xilDaSRMRMyP2yw3TPMxj0eKz2hSMWXoEg',
-  accessKeyId: 'AKIAI4UT5EPRVRC72O2A',
+  secretAccessKey: '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',
+  accessKeyId: 'AKIAIYC7HCJP2JDQJD4Q',
   region: 'us-east-2'
 })
 
