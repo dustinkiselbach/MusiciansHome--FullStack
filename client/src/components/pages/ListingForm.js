@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ListingsContext from '../../context/listings/listingsContext'
 import TextFieldGroupNew from '../common/TextFieldGroupNew'
-import TextAreaFieldGroup from '../../components/common/TextAreaFieldGroup'
-import SelectListGroup from '../../components/common/SelectListGroup'
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup'
+import SelectListGroup from '../common/SelectListGroup'
 
 const ListingForm = props => {
   const listingsContext = useContext(ListingsContext)

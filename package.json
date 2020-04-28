@@ -4,12 +4,12 @@
   "description": "api for musicianshome app",
   "main": "index.js",
   "scripts": {
-    "client-install": "npm install --prefix musicians-home-v2",
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix musicians-home-v2",
+    "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix musicians-home-v2 && npm run build --prefix musicians-home-v2"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Dustin Kiselbach",
   "license": "ISC",
