@@ -37,7 +37,7 @@ const ProfileForm = () => {
               <div className='user-form__form-area'>
                 <TextFieldGroupNew
                   name='birthday'
-                  type='text'
+                  type='date'
                   onChange={onChange}
                   placeholder='birthday'
                   error={errors.birthday}

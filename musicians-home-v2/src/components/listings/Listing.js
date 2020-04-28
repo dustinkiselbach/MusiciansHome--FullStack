@@ -13,13 +13,14 @@ const Listing = ({ match }) => {
 
   const profileContext = useContext(ProfileContext)
 
-  const { saveListing } = profileContext
+  const { saveListing, errors, clearErrors } = profileContext
 
   useEffect(() => {
     getListing(match.params.id)
 
     return () => {
       clearListing()
+      clearErrors()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps,
   }, [])

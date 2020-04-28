@@ -35,9 +35,8 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <Link to='/listings'>
-        <li>Rent</li>
+        <li>Sublet</li>
       </Link>
-      <li>Sublet</li>
       <Link to='/register'>
         <li>Register</li>
       </Link>
@@ -59,7 +58,7 @@ const Navbar = () => {
         <li>Profile</li>
       </Link>
       <a href='/#' onClick={onLogoutClick}>
-        Logout
+        <li>Logout</li>
       </a>
     </Fragment>
   )

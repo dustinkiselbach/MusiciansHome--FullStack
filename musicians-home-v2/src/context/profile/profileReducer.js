@@ -1,8 +1,11 @@
 import {
   GET_USER_PROFILE,
+  GET_USER_LISTINGS,
   PROFILE_ERROR,
   PROFILE_LOADING,
-  UNSAVE_LISTING
+  UNSAVE_LISTING,
+  CLEAR_ERRORS,
+  DELETE_LISTING
 } from '../types'
 
 export default (state, action) => {
@@ -12,6 +15,11 @@ export default (state, action) => {
         ...state,
         userProfile: action.payload,
         loading: false
+      }
+    case GET_USER_LISTINGS:
+      return {
+        ...state,
+        userListings: action.payload
       }
     case PROFILE_ERROR:
       return {
@@ -29,10 +37,22 @@ export default (state, action) => {
           )
         }
       }
+    case DELETE_LISTING:
+      return {
+        ...state,
+        userListings: state.userListings.filter(
+          listing => listing._id !== action.payload
+        )
+      }
     case PROFILE_LOADING:
       return {
         ...state,
         loading: true
+      }
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        errors: {}
       }
     default:
       return state

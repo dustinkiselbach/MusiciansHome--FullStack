@@ -20,7 +20,12 @@ const ListingForm = props => {
   const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
-    if (!loading && Object.keys(errors).length === 0 && redirect) {
+    if (
+      !loading &&
+      Object.keys(errors).length === 0 &&
+      redirect &&
+      addedId !== null
+    ) {
       props.history.push(`/listings/form/${addedId}`)
       console.log(addedId)
     }
@@ -168,7 +173,7 @@ const ListingForm = props => {
                 />
 
                 <TextFieldGroupNew
-                  type='text'
+                  type='date'
                   placeholder='movein'
                   name='movein'
                   value={movein}
@@ -178,7 +183,7 @@ const ListingForm = props => {
                 />
 
                 <TextFieldGroupNew
-                  type='text'
+                  type='date'
                   placeholder='moveout'
                   name='moveout'
                   value={moveout}

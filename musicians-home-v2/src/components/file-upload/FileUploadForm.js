@@ -1,11 +1,33 @@
-import React, { useContext, useCallback } from 'react'
-import ListingContext from '../../context/listings/listingsContext'
+import React, {
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+  Profiler
+} from 'react'
+import ListingsContext from '../../context/listings/listingsContext'
+import FileUploadImgItem from './FileUploadImgItem'
 import { useDropzone } from 'react-dropzone'
 
 const FileUploadForm = ({ match, history }) => {
-  const listingContext = useContext(ListingContext)
+  const listingsContext = useContext(ListingsContext)
 
-  const { addImage } = listingContext
+  const { addImage, deleteImage, getListing, listing } = listingsContext
+
+  const [disabled, setDisabled] = useState(false)
+
+  useEffect(() => {
+    getListing(match.params.id)
+  }, [])
+
+  // making sure you can't upload more than 5
+  useEffect(() => {
+    if (listing !== null && listing.img.length === 5) {
+      setDisabled(true)
+    } else {
+      setDisabled(false)
+    }
+  }, [listing])
 
   //   const [file, setFile] = useState()
 
@@ -30,6 +52,22 @@ const FileUploadForm = ({ match, history }) => {
     </li>
   ))
 
+  let images
+
+  // Images to be outputted to UI
+  if (listing !== null && listing.img.length > 0) {
+    images = listing.img.map(img => (
+      <FileUploadImgItem
+        deleteImage={deleteImage}
+        key={img._id}
+        img={img}
+        listingId={match.params.id}
+      />
+    ))
+  } else {
+    images = <div>No images here cowboy</div>
+  }
+
   // Normal form stuff REFERENCE IF NEEDED BUT NOT IN THIS APP
 
   //   const onSubmit = e => {
@@ -52,14 +90,16 @@ const FileUploadForm = ({ match, history }) => {
   }
 
   return (
-    <div style={{ marginTop: '10rem' }}>
+    <section className='fileupload'>
       {/* <form onSubmit={onSubmit}>
         <input type='file' name='myImage' onChange={onChange} />
         <button type='submit'>Upload</button> */}
       {/* reactdropzone */}
-      <section className='container'>
+      <div className='container'>
+        <h1 className='title'>You can remove your images</h1>
+        {images}
         <div {...getRootProps({ className: 'dropzone' })}>
-          <input {...getInputProps()} />
+          <input {...getInputProps({ disabled })} />
           <p>
             Drag 'n' drop some images for your listing here, or click to select
             files
@@ -69,12 +109,12 @@ const FileUploadForm = ({ match, history }) => {
           <h4>Files</h4>
           <ul>{files}</ul>
         </aside>
-      </section>
+      </div>
       <button onClick={onDoneClick} className='btn'>
         Done
       </button>
       {/* </form> */}
-    </div>
+    </section>
   )
 }
 

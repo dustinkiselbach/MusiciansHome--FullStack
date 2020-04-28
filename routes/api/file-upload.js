@@ -52,7 +52,7 @@ router.post(
             url: req.file.location,
             featured: req.body.featured
           }
-          listing.img.unshift(newImg)
+          listing.img.push(newImg)
 
           listing.save().then(listing => res.json(listing))
         })

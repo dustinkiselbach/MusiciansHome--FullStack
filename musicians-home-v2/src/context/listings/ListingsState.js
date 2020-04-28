@@ -13,6 +13,8 @@ import {
   CLEAR_FILTER,
   SET_CURRENT_SEARCH,
   GET_LISTING,
+  ADD_IMAGE,
+  DELETE_IMAGE,
   CLEAR_LISTING,
   LISTING_ERROR,
   LISTING_LOADING,
@@ -22,6 +24,7 @@ import {
 const ListingsState = props => {
   const initialState = {
     listings: null,
+    // Used when updating only
     current: null,
     filtered: null,
     currentSearch: '',
@@ -91,18 +94,8 @@ const ListingsState = props => {
 
   // Update Listing
   const updateListing = async listing => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-
     try {
-      const res = await axios.put(
-        `/api/listings/${listing._id}`,
-        listing,
-        config
-      )
+      const res = await axios.put(`/api/listings/${listing._id}`, listing)
 
       dispatch({
         type: UPDATE_LISTING,
@@ -168,7 +161,23 @@ const ListingsState = props => {
     // setListingLoading()
     try {
       const res = await axios.post(`/api/files/listings/${id}`, img)
-      // dispatch({ type: ADD_LISTING, payload: res.data })
+      dispatch({ type: ADD_IMAGE, payload: res.data.img.slice(-1)[0] })
+    } catch (err) {
+      dispatch({
+        type: LISTING_ERROR,
+        payload: err.response.data
+      })
+    }
+    // loading
+  }
+
+  // Delete Image
+  const deleteImage = async (listingId, imgId) => {
+    // clearErrors()
+    // setListingLoading()
+    try {
+      await axios.delete(`/api/files/listings/${listingId}/${imgId}`)
+      dispatch({ type: DELETE_IMAGE, payload: imgId })
     } catch (err) {
       dispatch({
         type: LISTING_ERROR,
@@ -202,7 +211,8 @@ const ListingsState = props => {
         clearFilter,
         setCurrentSearch,
         clearListing,
-        addImage
+        addImage,
+        deleteImage
       }}
     >
       {props.children}

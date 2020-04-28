@@ -12,6 +12,8 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "^16.13.1",
+    "react-alert": "^7.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",
     "react-moment": "^0.9.7",

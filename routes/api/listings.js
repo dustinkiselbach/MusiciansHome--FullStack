@@ -74,15 +74,15 @@ router.post(
   }
 )
 
-// @route  GET api/listings/user-listings
+// @route  GET api/listings/user-listings/list
 // @desc   DELETE Listing
 // @access Private
 router.get(
-  '/user-listings/fart',
+  '/user-listings/list',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Listings.find({ user: req.user.id }).then(listings => {
-      console.log(listings)
+      res.json(listings)
     })
   }
 )

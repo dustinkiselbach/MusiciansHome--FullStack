@@ -12,6 +12,8 @@ export const GET_LISTING = 'GET_LISTING'
 export const CLEAR_LISTING = 'CLEAR_LISTING'
 export const LISTING_LOADING = 'LISTING_LOADING'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+export const ADD_IMAGE = 'ADD_IMAGE'
+export const DELETE_IMAGE = 'DELETE_IMAGE'
 
 // User Types
 export const REGISTER_USER = 'REGISTER_USER'
@@ -20,6 +22,7 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
 // Profile types
 export const GET_USER_PROFILE = 'GET_USER_PROFILE'
+export const GET_USER_LISTINGS = 'GET_USER_LISTINGS'
 export const PROFILE_ERROR = 'PROFILE_ERROR'
 export const PROFILE_LOADING = 'PROFILE_LOADING'
 export const UNSAVE_LISTING = 'UNSAVE_LISTING'

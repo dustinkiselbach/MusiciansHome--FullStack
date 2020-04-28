@@ -23,7 +23,7 @@ router.post(
     const newProfile = new Profile({
       lookingfor: req.body.lookingfor,
       birthday: req.body.birthday,
-
+      saved: req.body.saved,
       user: req.user.id
     })
     //Check if already exists
@@ -35,7 +35,10 @@ router.post(
       }
     })
 
-    newProfile.save().then(profile => res.json(profile))
+    newProfile
+      .save()
+      .then(profile => res.json(profile))
+      .catch(err => res.json({ err: 'wtf?' }))
   }
 )
 

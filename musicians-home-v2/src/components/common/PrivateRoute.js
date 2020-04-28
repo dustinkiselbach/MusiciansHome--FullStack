@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import UsersContext from '../../context/users/usersContext'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Register from '../users/Register'
 
 const PrivateRoute = ({ component, ...rest }) => {

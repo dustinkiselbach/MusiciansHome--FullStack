@@ -31,7 +31,12 @@ const ListingSocial = props => {
       <a href='/#' onClick={open}>
         <span className='material-icons'>share</span>share
       </a>
-      <Dialog isOpen={show} onDismiss={close} className='modal'>
+      <Dialog
+        aria-label='Social Media'
+        isOpen={show}
+        onDismiss={close}
+        className='modal'
+      >
         <button className='close-btn' onClick={close}>
           <span aria-hidden>×</span>
         </button>

@@ -19,6 +19,7 @@ import ProfileState from './context/profile/ProfileState'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './components/common/PrivateRoute'
 
+import '@reach/dialog/styles.css'
 import './App.css'
 
 function App () {
