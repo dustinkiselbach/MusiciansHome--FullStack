@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, Fragment } from 'react'
 import UsersContext from '../../context/users/usersContext'
 import TextFieldGroupNew from '../common/TextFieldGroupNew'
+import Space from '../common/Space'
 
 const Register = props => {
   const usersContext = useContext(UsersContext)
@@ -34,49 +35,57 @@ const Register = props => {
   }
 
   return (
-    <div className='user-form-all'>
-      <div className='overlay'>
-        <div className='container'>
-          <section className='user-form'>
-            <form onSubmit={onSubmit}>
-              <h2 className='user-form__title title'>Register</h2>
-              <div className='user-form__form-area'>
-                <TextFieldGroupNew
-                  name='name'
-                  type='text'
-                  onChange={onChange}
-                  placeholder='Name'
-                  error={errors.name}
-                />
-                <TextFieldGroupNew
-                  name='email'
-                  type='email'
-                  onChange={onChange}
-                  placeholder='Email'
-                  error={errors.email}
-                />
-                <TextFieldGroupNew
-                  name='password'
-                  type='password'
-                  onChange={onChange}
-                  placeholder='Password'
-                  error={errors.password}
-                />
-                <TextFieldGroupNew
-                  name='password2'
-                  type='password'
-                  onChange={onChange}
-                  placeholder='Confirm Password'
-                  error={errors.password2}
-                />
-                <button className='btn'>Register</button>
-              </div>
-            </form>
-            <div className='listing-form__img'></div>
-          </section>
+    <Fragment>
+      <div className='user-form-all'>
+        <div className='overlay'>
+          <div className='container'>
+            <section className='user-form'>
+              <form onSubmit={onSubmit}>
+                <h2 className='user-form__title title'>Register</h2>
+                <div className='user-form__form-area'>
+                  <TextFieldGroupNew
+                    name='name'
+                    type='text'
+                    onChange={onChange}
+                    placeholder='Name'
+                    error={errors.name}
+                  />
+                  <TextFieldGroupNew
+                    name='email'
+                    type='email'
+                    onChange={onChange}
+                    placeholder='Email'
+                    error={errors.email}
+                  />
+                  <TextFieldGroupNew
+                    name='password'
+                    type='password'
+                    onChange={onChange}
+                    placeholder='Password'
+                    error={errors.password}
+                  />
+                  <TextFieldGroupNew
+                    name='password2'
+                    type='password'
+                    onChange={onChange}
+                    placeholder='Confirm Password'
+                    error={errors.password2}
+                  />
+                  <button className='btn'>Register</button>
+                </div>
+              </form>
+              <div className='listing-form__img'></div>
+            </section>
+          </div>
         </div>
       </div>
-    </div>
+      <Space
+        message='Register today and find your place'
+        btn='sign in'
+        small='or if you"re already registered'
+        link='/login'
+      />
+    </Fragment>
   )
 }
 

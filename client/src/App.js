@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import './main.css'
 
 import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 import Home from './components/pages/Home'
 import Listings from './components/pages/Listings'
 import ListingForm from './components/pages/ListingForm'
@@ -54,6 +55,7 @@ function App () {
                   component={ProfileForm}
                 />
               </Switch>
+              <Footer />
             </Fragment>
           </Router>
         </ProfileState>

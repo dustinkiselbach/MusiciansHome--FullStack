@@ -77,7 +77,9 @@ const ProfileState = props => {
       await axios.post(`/api/profile/save/${listingid}`)
       alert.success('listing saved')
     } catch (err) {
-      alert.error('you have already saved this listing')
+      alert.error(
+        'you have already saved this listing or you are not signed in'
+      )
       dispatch({
         type: PROFILE_ERROR,
         payload: err.response.data

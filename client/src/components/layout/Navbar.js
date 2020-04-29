@@ -32,15 +32,20 @@ const Navbar = () => {
     }
   }
 
+  const onLinkClick = () => {
+    setToggled('none')
+    setToggleBool(false)
+  }
+
   const guestLinks = (
     <Fragment>
-      <Link to='/listings'>
+      <Link onClick={onLinkClick} to='/listings'>
         <li>Sublet</li>
       </Link>
-      <Link to='/register'>
+      <Link onClick={onLinkClick} to='/register'>
         <li>Register</li>
       </Link>
-      <Link to='/login'>
+      <Link onClick={onLinkClick} to='/login'>
         <li>Login</li>
       </Link>
     </Fragment>
@@ -48,13 +53,13 @@ const Navbar = () => {
 
   const authLinks = (
     <Fragment>
-      <Link to='/listings'>
+      <Link onClick={onLinkClick} to='/listings'>
         <li>Sublet</li>
       </Link>
-      <Link to='/listings/form'>
+      <Link onClick={onLinkClick} to='/listings/form'>
         <li>List</li>
       </Link>
-      <Link to='/profile'>
+      <Link onClick={onLinkClick} to='/profile'>
         <li>Profile</li>
       </Link>
       <a href='/#' onClick={onLogoutClick}>

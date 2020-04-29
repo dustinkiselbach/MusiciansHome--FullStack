@@ -1,0 +1,24 @@
+.space {
+  height: 50vh;
+  background-image: url(./img/form-img2.jpg);
+  background-size: cover;
+  background-position: bottom;
+  &-title {
+    color: #eeee;
+  }
+
+  &-items {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 25vh;
+    &__bottom {
+      &-small {
+        color: #eee;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

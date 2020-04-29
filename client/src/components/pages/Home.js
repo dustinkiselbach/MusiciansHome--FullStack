@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import Header from '../layout/Header'
 import InfoCard from '../layout/InfoCard'
-import Footer from '../layout/Footer'
 
 const Home = () => {
   const [cards] = useState([
@@ -28,7 +27,6 @@ const Home = () => {
           ))}
         </section>
       </div>
-      <Footer />
     </Fragment>
   )
 }

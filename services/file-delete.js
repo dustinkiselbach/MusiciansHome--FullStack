@@ -2,9 +2,6 @@ const aws = require('aws-sdk')
 const secretkey = require('../config/keys').AWSAccessKeyId
 const secretid = require('../config/keys').AWSSecretKey
 
-console.log(secretkey)
-console.log(secretid)
-
 const s3 = new aws.S3()
 
 // TODO move secret keys

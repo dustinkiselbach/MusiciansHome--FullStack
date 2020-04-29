@@ -15,3 +15,9 @@
 @import 'components/user-form';
 @import 'components/file-upload-form';
 @import 'components/profile';
+@import 'components/space';
+
+.quickform {
+  display: flex;
+  flex-direction: column;
+}

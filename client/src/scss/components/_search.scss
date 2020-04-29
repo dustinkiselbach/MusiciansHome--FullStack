@@ -4,7 +4,7 @@
   height: 3rem;
   position: relative;
   @include respond(tab-port) {
-    width: 75%;
+    width: 80%;
   }
 
   &__text {

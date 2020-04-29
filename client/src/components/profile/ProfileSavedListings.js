@@ -19,7 +19,7 @@ const ProfileSavedListings = ({ item }) => {
   return (
     <div className='profile-saved__item'>
       <Link to={`/listings/${item._id}`}>
-        <h3 className='profile-saved__item-title profile-link'>
+        <h3 className='profile-saved__item-title profile-link title-tertiary'>
           {item.title}, {item.city}, {item.state}
         </h3>
       </Link>
@@ -28,7 +28,7 @@ const ProfileSavedListings = ({ item }) => {
         className='btn btn-danger'
         onClick={onDeleteClick}
       >
-        Remove
+        <span class='material-icons'>clear</span>
       </button>
     </div>
   )

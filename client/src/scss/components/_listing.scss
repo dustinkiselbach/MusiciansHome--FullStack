@@ -54,6 +54,10 @@
 
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 'a a b';
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   &__info {
     grid-area: a;

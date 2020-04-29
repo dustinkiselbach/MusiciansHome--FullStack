@@ -11,12 +11,20 @@ import {
   TwitterIcon
 } from 'react-share'
 
-const ListingSocial = props => {
+const ListingSocial = ({ listing }) => {
   const [show, setShow] = useState(false)
 
   const open = e => {
     e.preventDefault()
-    setShow(true)
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      // mobile!
+      navigator.share({
+        title: listing.title,
+        url: window.location.href
+      })
+    } else {
+      setShow(true)
+    }
   }
 
   const close = e => {
@@ -24,7 +32,7 @@ const ListingSocial = props => {
   }
 
   // TODO get final url and set so it can share the page properly
-  let currentUrl = 'www.reddit.com/r/reactjs'
+  let currentUrl = window.location.href
 
   return (
     <Fragment>

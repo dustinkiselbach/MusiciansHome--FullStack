@@ -44,19 +44,17 @@ const ProfileUserListingsItem = ({ item, history }) => {
         </Link>
       </div>
       <div className='profile-userlistings__item-text'>
-        <h3 className='profile-userlistings__item-title title-tertiary'>
-          {item.title}
-        </h3>
+        <h3 className='profile-userlistings__item-title'>{item.title}</h3>
         <p className='profile-userlistings__item-details'>
           {item.city}, {item.state}
         </p>
       </div>
       <div className='profile-userlistings__item-btns'>
         <button onClick={onUpdateClick} className='btn btn-ifno'>
-          Update
+          <span class='material-icons icon'>update</span>
         </button>
         <button onClick={onDeleteClick} className='btn btn-danger'>
-          Delete
+          <span class='material-icons icon'>clear</span>
         </button>
       </div>
     </div>

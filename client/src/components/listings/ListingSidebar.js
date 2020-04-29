@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ListingEmail from './ListingEmail'
 import Moment from 'react-moment'
 
 const ListingSidebar = ({ listing }) => {
@@ -55,7 +56,7 @@ const ListingSidebar = ({ listing }) => {
         </div>
         {toggleMoveIn}
         <div className='listing-detail__sidebar--card-bottombtn'>
-          <button className='btn'>Check Availablity</button>
+          <ListingEmail listing={listing} />
         </div>
       </div>
     </div>

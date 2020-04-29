@@ -104,7 +104,7 @@ const FileUploadForm = ({ match, history }) => {
         <div className='dark-line'></div>
         <div className='fileupload__header-secondary'>
           <h1 className='title'>Edit your images here</h1>
-          <p className='lead'>The first image is featured</p>
+          <p className='lead'>The first image you upload is featured</p>
         </div>
         <div className='fileupload__items'>{images}</div>
         {/* </form> */}

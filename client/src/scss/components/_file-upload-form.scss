@@ -1,12 +1,11 @@
 .dropzone {
   background-color: rgba(#cacaca, 0.8);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
 
-  padding: 4rem;
+  padding: 3rem;
   border: 1px rgba($primary-color, 0.5) dashed;
   margin: 1rem 1rem 4rem 1rem;
+  width: 75%;
+  text-align: center;
 }
 
 .fileupload {
@@ -28,8 +27,8 @@
     display: flex;
     padding: 1rem;
     @include respond(phone) {
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
@@ -47,12 +46,12 @@
     justify-content: center;
     & .btn {
       text-align: center;
-      width: 25%;
+      width: 50%;
     }
   }
 
   & #fileupload {
-    height: 15vh;
+    height: 10rem;
     background-image: url(./img/header-3.jpg);
     background-size: cover;
     background-position: bottom;
@@ -61,6 +60,21 @@
       align-items: center;
       justify-content: center;
       padding-top: 5rem;
+    }
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+  }
+
+  & h2 {
+    @include respond(tab-port) {
+      display: block;
+      font-size: 1.5rem;
     }
   }
 }

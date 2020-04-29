@@ -1,5 +1,5 @@
 .heading-secondary {
-  height: 15vh;
+  height: 10rem;
   background-image: url(./img/header-2.jpg);
   background-size: cover;
   background-position: bottom;
@@ -11,6 +11,11 @@
     align-items: flex-end;
     justify-content: space-between;
     padding: 0 1rem 1rem 1rem;
+    @include respond(tab-port) {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
   }
 
   & h2 {

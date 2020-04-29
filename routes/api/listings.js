@@ -2,6 +2,11 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const passport = require('passport')
+const nodemailer = require('nodemailer')
+
+// keys
+const email = require('../../config/keys').EMAIL_USER
+const password = require('../../config/keys').EMAIL_PASSWORD
 
 // Helper Regex
 const escapeRegex = require('../../utils/regex-escape')
@@ -35,7 +40,7 @@ router.get('/', (req, res) => {
 // @access Public
 router.get('/:id', (req, res) => {
   Listings.findById(req.params.id)
-    .populate('user', ['name'])
+    .populate('user', ['name', 'email'])
     .then(post => res.json(post))
     .catch(err =>
       res.status(404).json({ nolistingfound: 'No post found with that ID' })
@@ -201,6 +206,36 @@ router.get('/search/:page', async (req, res, next) => {
     }
   } catch (err) {
     throw new Error(err)
+  }
+})
+
+// SEND EMAIL
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: email,
+    pass: password
+  }
+})
+
+router.post('/email', async (req, res) => {
+  try {
+    let mailOptions = {
+      from: 'musicianshome@gmail.com',
+      to: req.body.email,
+      subject: req.body.subject,
+      text: req.body.text
+    }
+    transporter.sendMail(mailOptions, function (err, data) {
+      if (err) {
+        console.log('Error occured')
+      } else {
+        console.log('worked')
+      }
+    })
+    return res.json({ success: `message sent to ${req.body.email}` })
+  } catch {
+    return res.status(404).json({ emailnotsend: 'sending failed' })
   }
 })
 

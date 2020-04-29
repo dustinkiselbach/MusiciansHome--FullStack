@@ -198,6 +198,16 @@ const ListingsState = props => {
       console.log(err)
     }
   }
+
+  // Send email
+  const sendEmail = async fields => {
+    try {
+      await axios.post(`/api/listings/email`, fields)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <ListingsContext.Provider
       value={{
@@ -224,6 +234,7 @@ const ListingsState = props => {
         setCurrentSearch,
         clearListing,
         addImage,
+        sendEmail,
         deleteImage,
         searchListings
       }}

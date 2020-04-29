@@ -13,7 +13,9 @@ const Listing = ({ match }) => {
 
   const profileContext = useContext(ProfileContext)
 
-  const { saveListing, errors, clearErrors } = profileContext
+  const { saveListing, clearErrors } = profileContext
+
+  console.log(listing)
 
   useEffect(() => {
     getListing(match.params.id)
@@ -46,7 +48,7 @@ const Listing = ({ match }) => {
                 </a>
               </li>
               <li className='listing-detail__nav--linkitems'>
-                <ListingSocial />
+                <ListingSocial listing={listing} />
               </li>
             </ul>
           </div>
