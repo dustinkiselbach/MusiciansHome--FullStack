@@ -21,6 +21,10 @@
     text-align: center;
     margin-bottom: 2rem;
     grid-area: title;
+    &-p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
   }
   &-link:hover {
     text-decoration: underline;
@@ -58,7 +62,7 @@
     &__item {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       text-align: center;
       margin-top: 1rem;
 

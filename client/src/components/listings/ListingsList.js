@@ -5,12 +5,11 @@ const ListingsList = ({ listing }) => {
   const {
     title,
     // description,
-    address,
+    // user and address also available
     city,
     state,
     zipcode,
     price,
-    user,
     _id,
     img
   } = listing
@@ -37,7 +36,9 @@ const ListingsList = ({ listing }) => {
 
   return (
     <div className='listing'>
-      <img className='listing__img' src={imgUrl} alt='' />
+      <div className='listing__img'>
+        <img className='listing__img-img' src={imgUrl} alt='' />
+      </div>
       <div className='listing__text'>
         <Link to={`listings/${_id}`}>
           <h1 className='listing__text--title'>${price}/mo</h1>

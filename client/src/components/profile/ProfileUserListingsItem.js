@@ -40,7 +40,7 @@ const ProfileUserListingsItem = ({ item, history }) => {
           />
         )}
         <Link to={`listings/form/${item._id}`}>
-          <span class='material-icons'>edit</span>
+          <span className='material-icons'>edit</span>
         </Link>
       </div>
       <div className='profile-userlistings__item-text'>
@@ -51,10 +51,10 @@ const ProfileUserListingsItem = ({ item, history }) => {
       </div>
       <div className='profile-userlistings__item-btns'>
         <button onClick={onUpdateClick} className='btn btn-ifno'>
-          <span class='material-icons icon'>update</span>
+          <span className='material-icons icon'>update</span>
         </button>
         <button onClick={onDeleteClick} className='btn btn-danger'>
-          <span class='material-icons icon'>clear</span>
+          <span className='material-icons icon'>clear</span>
         </button>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
   UPDATE_LISTING,
   GET_LISTINGS,
   FILTER_LISTINGS,
-  CLEAR_FILTER,
+  CLEAR_SEARCH,
   SET_CURRENT_SEARCH,
   SEARCH_LISTINGS,
   GET_LISTING,
@@ -27,7 +27,6 @@ const ListingsState = props => {
     listings: null,
     // Used when updating only
     current: null,
-    filtered: null,
     searchResults: null,
     currentSearch: '',
     listing: null,
@@ -134,9 +133,9 @@ const ListingsState = props => {
     dispatch({ type: FILTER_LISTINGS, payload: text })
   }
 
-  // Clear Filter
-  const clearFilter = () => {
-    dispatch({ type: CLEAR_FILTER })
+  // Clear Search
+  const clearSearch = () => {
+    dispatch({ type: CLEAR_SEARCH })
   }
 
   // Set current search
@@ -192,7 +191,9 @@ const ListingsState = props => {
   // Search Listings
   const searchListings = async (page, query) => {
     try {
-      const res = await axios.get(`/api/listings/search/${page}?city=${query}`)
+      const res = await axios.get(
+        `/api/listings/search/${page}?keyword=${query}`
+      )
       dispatch({ type: SEARCH_LISTINGS, payload: res.data })
     } catch (err) {
       console.log(err)
@@ -215,7 +216,6 @@ const ListingsState = props => {
         listing: state.listing,
         current: state.current,
         testListings: state.testListings,
-        filtered: state.filtered,
         currentSearch: state.currentSearch,
         errors: state.errors,
         loading: state.loading,
@@ -230,7 +230,7 @@ const ListingsState = props => {
         getListings,
         getListing,
         filterListings,
-        clearFilter,
+        clearSearch,
         setCurrentSearch,
         clearListing,
         addImage,

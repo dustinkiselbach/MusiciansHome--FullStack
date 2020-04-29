@@ -188,3 +188,25 @@
     }
   }
 }
+
+// email
+.email {
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & input,
+  textarea,
+  select {
+    width: 95%;
+    border-radius: 2px;
+    border: rgba($primary-color, 0.45) solid 1px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.5rem 1rem;
+    // only applies to select list
+    color: rgba($dark-color, 0.95);
+    margin: 1rem;
+  }
+}

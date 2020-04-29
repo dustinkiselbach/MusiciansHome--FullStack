@@ -15,25 +15,28 @@ const Listings = () => {
     getListings,
     searchResults,
     searchListings,
-    clearFilter,
+    clearSearch,
     setCurrentSearch,
     currentSearch,
     loading
   } = listingsContext
 
   useEffect(() => {
-    getListings()
-    if (searchResults !== null) {
-      console.log(Array.from({ length: searchResults.pages }, (x, i) => i))
-      console.log(searchResults.pages)
+    return () => {
+      clearSearch()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
+  }, [])
+
+  useEffect(() => {
+    getListings()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps,
   }, [searchResults])
 
   const onClick = () => {
     clearCurrent()
-    clearFilter()
+
     setCurrentSearch()
   }
 

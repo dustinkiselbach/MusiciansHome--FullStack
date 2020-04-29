@@ -185,10 +185,20 @@ router.get('/search/:page', async (req, res, next) => {
 
   try {
     if (req.query) {
-      const query = req.query.city
+      const query = req.query.keyword
 
       const foundListings = await Listings.find({
-        city: { $regex: new RegExp(query, 'i') }
+        $or: [
+          {
+            city: { $regex: new RegExp(query, 'i') }
+          },
+          {
+            title: { $regex: new RegExp(query, 'i') }
+          },
+          {
+            state: { $regex: new RegExp(query, 'i') }
+          }
+        ]
       })
         .skip(resPerPage * page - resPerPage)
         .limit(resPerPage)

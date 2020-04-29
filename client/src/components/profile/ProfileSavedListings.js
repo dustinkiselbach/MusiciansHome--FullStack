@@ -28,7 +28,7 @@ const ProfileSavedListings = ({ item }) => {
         className='btn btn-danger'
         onClick={onDeleteClick}
       >
-        <span class='material-icons'>clear</span>
+        <span className='material-icons'>clear</span>
       </button>
     </div>
   )

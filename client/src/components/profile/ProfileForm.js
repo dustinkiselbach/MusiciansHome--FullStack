@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import ProfileContext from '../../context/profile/profileContext'
 import TextFieldGroupNew from '../common/TextFieldGroupNew'
 
-const ProfileForm = () => {
+const ProfileForm = ({ history }) => {
   const profileContext = useContext(ProfileContext)
 
   const { createUserProfile, errors } = profileContext
@@ -25,6 +25,7 @@ const ProfileForm = () => {
     }
 
     createUserProfile(newProfile)
+    history.push('/profile')
   }
 
   return (

@@ -6,7 +6,6 @@ import {
   UPDATE_LISTING,
   GET_LISTINGS,
   FILTER_LISTINGS,
-  CLEAR_FILTER,
   SET_CURRENT_SEARCH,
   SEARCH_LISTINGS,
   GET_LISTING,
@@ -15,7 +14,8 @@ import {
   CLEAR_LISTING,
   LISTING_ERROR,
   LISTING_LOADING,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  CLEAR_SEARCH
 } from '../types'
 
 export default (state, action) => {
@@ -98,10 +98,11 @@ export default (state, action) => {
         ...state,
         currentSearch: action.payload
       }
-    case CLEAR_FILTER:
+    case CLEAR_SEARCH:
       return {
         ...state,
-        filtered: null
+        searchResults: null,
+        currentSearch: null
       }
     case SET_CURRENT:
       return {

@@ -52,7 +52,7 @@ $success-color: #28a745;
     }
   }
   @if $breakpoint == med-desktop {
-    @media (min-width: 1400px) {
+    @media (min-width: 1200px) {
       //1800px
       @content;
     }

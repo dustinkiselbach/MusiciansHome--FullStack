@@ -13,12 +13,6 @@ const ListingEmail = ({ listing }) => {
     text: ''
   })
 
-  const [fart] = useState({
-    email: 'dustinkiselbach@gmail.com',
-    subject: 'testing in client',
-    text: 'testing in client'
-  })
-
   const onChange = e => {
     setFields({ ...fields, [e.target.name]: e.target.value })
   }
@@ -37,9 +31,13 @@ const ListingEmail = ({ listing }) => {
         aria-label='Social Media'
         isOpen={show}
         onDismiss={() => setShow(false)}
-        className='modal'
+        className='email'
       >
-        <form className='quickform'>
+        <h1 className='lead'>
+          Send a quick Email to enquire about this sublet, include your email in
+          the body
+        </h1>
+        <form className='email__form'>
           <input
             type='text'
             placeholder='subject'

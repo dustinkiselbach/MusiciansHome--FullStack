@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useContext, Fragment } from 'react'
+import React, { useEffect, useContext, Fragment } from 'react'
 import ProfileContext from '../../context/profile/profileContext'
 import UsersContext from '../../context/users/usersContext'
 import Spinner from '../layout/Spinner'
 import ProfileSavedListings from './ProfileSavedListings'
 import ProfileUserListings from './ProfileUserListings'
 import ProfileDetails from './ProfileDetails'
+import Space from '../common/Space'
 import { Link } from 'react-router-dom'
 
 const Profile = props => {
@@ -16,8 +17,7 @@ const Profile = props => {
     getUserListings,
     userProfile,
     userListings,
-    loading,
-    errors
+    loading
   } = profileContext
 
   const { user } = usersContext
@@ -25,7 +25,10 @@ const Profile = props => {
   useEffect(() => {
     getUserProfile()
     getUserListings()
+    // eslint-disable-next-line react-hooks/exhaustive-deps,
   }, [])
+
+  let noUserStyles
 
   let profileStuff
 
@@ -54,6 +57,13 @@ const Profile = props => {
     )
   }
 
+  if (!userProfile) {
+    noUserStyles = {
+      display: 'flex',
+      flexDirection: 'column'
+    }
+  }
+
   if (loading) {
     return <Spinner />
   }
@@ -61,12 +71,12 @@ const Profile = props => {
   return (
     <section className='profile'>
       <div className='container'>
-        <div className='profile-all'>
+        <div className='profile-all' style={noUserStyles}>
           <h1 className='profile-header title'>Welcome {user.name}</h1>
           {userProfile ? (
             profileStuff
           ) : (
-            <div className='lead'>
+            <div className='profile-header-p lead'>
               <Link to='/profile/form' className='profile-link'>
                 Create profile
               </Link>{' '}
@@ -81,11 +91,28 @@ const Profile = props => {
               loading={loading}
             />
           ) : (
-            <div>NO USER LISTINGS</div>
+            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+              If you decide to list a sublet, you will see it here
+            </div>
           )}
         </div>
         <div className='dark-line'></div>
       </div>
+      {!userProfile ? (
+        <Space
+          link='/profile/form'
+          small='If you would like to sublet or list your sublet'
+          btn='Create Profile'
+          message='Please Create a profile'
+        />
+      ) : (
+        <Space
+          link='/listings'
+          small='If you would like to check out all sublets'
+          btn='Click here'
+          message='Your Profile'
+        />
+      )}
     </section>
   )
 }

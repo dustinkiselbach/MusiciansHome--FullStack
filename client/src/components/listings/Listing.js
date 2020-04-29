@@ -15,8 +15,6 @@ const Listing = ({ match }) => {
 
   const { saveListing, clearErrors } = profileContext
 
-  console.log(listing)
-
   useEffect(() => {
     getListing(match.params.id)
 

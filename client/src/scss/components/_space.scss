@@ -4,7 +4,8 @@
   background-size: cover;
   background-position: bottom;
   &-title {
-    color: #eeee;
+    color: $light-color;
+    z-index: 100000;
   }
 
   &-items {
@@ -16,8 +17,9 @@
     height: 25vh;
     &__bottom {
       &-small {
-        color: #eee;
+        color: $light-color;
         margin-right: 1rem;
+        z-index: 100;
       }
     }
   }
